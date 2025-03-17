@@ -54,27 +54,25 @@ function showCards(arr) {
 function showACard({ title, image, channelTitle, link }) {
   //main card container
   const card = document.createElement("div");
-  card.className =
-    "rounded-xl bg-zinc-700  shadow-xl border-1 border-zinc-600 w-fit";
+  card.id = `card`;
 
   //image element
   const img = document.createElement("img");
-  img.className = "rounded-tr-xl rounded-tl-xl h-52 w-72";
   img.src = image;
   img.alt = "Youtube thumbnail";
 
   //content container
   const contentDiv = document.createElement("div");
-  contentDiv.className = "flex flex-col px-2 py-1";
+  contentDiv.id = "contentDiv";
 
   //title label
   const titleLabel = document.createElement("label");
-  titleLabel.className = "text-white text-lg";
+  titleLabel.id = "titleLabel";
   titleLabel.textContent = title;
 
   //channel label
   const channelLabel = document.createElement("label");
-  channelLabel.className = "text-zinc-400 text-sm";
+  channelLabel.id = "channelLabel";
   channelLabel.textContent = channelTitle;
 
   // Assemble the card
