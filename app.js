@@ -1,6 +1,7 @@
 const cardContainer = document.getElementById("card-container");
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
+const messageDisplay = document.getElementById("messageDisplay");
 
 let allVideos = [];
 
@@ -8,10 +9,11 @@ getData();
 
 // getData  from api and saving to allvideo array
 async function getData() {
+  messageDisplay.textContent = "Please Wait...";
+
   const response = await fetch(
     "https://api.freeapi.app/api/v1/public/youtube/videos"
   );
-
   const data = await response.json();
   const videoData = data.data.data;
 
@@ -33,7 +35,7 @@ async function getData() {
 function showCards(arr) {
   cardContainer.innerHTML = "";
 
-  console.log(arr);
+  if (arr.length > 0) messageDisplay.classList.add("hidden");
 
   arr.map((video) => {
     const card = showACard({
@@ -98,12 +100,10 @@ function searchVideo() {
   // get inserted value
   const query = searchInput.value.trim();
   if (!query) {
-    // nothing is typed then show all videos
+    //if  nothing is typed then show all videos
     showCards(allVideos);
     return;
   }
-
-  if (allVideos.length < 0) return;
 
   let searchVideos = [];
 
@@ -111,9 +111,11 @@ function searchVideo() {
     return video.title.toLowerCase().includes(query.toLowerCase());
   });
 
-  if (searchVideos.length < 0){
-    
+  if (searchVideos.length <= 0) {
+    messageDisplay.classList.remove("hidden");
+    messageDisplay.textContent = "No Video Found";
   }
-    // showing founded videos
-    showCards(searchVideos);
+
+  // showing founded videos
+  showCards(searchVideos);
 }
