@@ -25,9 +25,9 @@
 }
 
 #inputDiv {
+    border: 2px solid #71717a;
     border-radius: 1.5rem;      
     border-color: #71717a;      
-    border-width: 1px;         
     width: 100%;              
     display: flex;            
 }
@@ -72,9 +72,8 @@
     border-radius: 0.75rem;     
     background-color: #3f3f46;  
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 
-                0 8px 10px -6px rgb(0 0 0 / 0.1);  
-    border-width: 1px;         
-    border-color: #52525b;    
+                0 8px 10px -6px rgb(0 0 0 / 0.1);          
+    border: 1px solid #52525b;    
     width: fit-content;      
   }
 
